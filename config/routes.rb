@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Anticipation resource:
+  # CREATE
+  get "/anticipations/new", :controller => "anticipations", :action => "new"
+  post "/create_anticipation", :controller => "anticipations", :action => "create"
+
+  # READ
+  get "/anticipations", :controller => "anticipations", :action => "index"
+  get "/anticipations/:id", :controller => "anticipations", :action => "show"
+
+  # UPDATE
+  get "/anticipations/:id/edit", :controller => "anticipations", :action => "edit"
+  post "/update_anticipation/:id", :controller => "anticipations", :action => "update"
+
+  # DELETE
+  get "/delete_anticipation/:id", :controller => "anticipations", :action => "destroy"
+  #------------------------------
+
   # Routes for the Route resource:
   # CREATE
   get "/routes/new", :controller => "routes", :action => "new"

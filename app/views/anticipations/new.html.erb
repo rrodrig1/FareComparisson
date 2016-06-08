@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @anticipation.errors.any? %>
+  <% @anticipation.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Anticipation</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_anticipation" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for advance -->
+      <div class="form-group">
+        <label for="advance" class="control-label">
+          Advance
+        </label>
+
+        <input type="text" id="advance" name="advance" placeholder="Advance" class="form-control" value="<%= @anticipation.advance %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @anticipation.description %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Anticipation
+      </button>
+      or
+      <a href="/anticipations">Cancel</a>
+    </form>
+  </div>
+</div>

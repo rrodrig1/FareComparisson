@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Anticipation #<%= @anticipation.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Advance</dt>
+      <dd><%= @anticipation.advance %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @anticipation.description %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/anticipations" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/anticipations/<%= @anticipation.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_anticipation/<%= @anticipation.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
