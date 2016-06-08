@@ -1,7 +1,6 @@
-<div class="page-header">
+<div class="page-header text-center">
   <h1>
     My Routes
-    <a href="/routes/new" class="btn btn-lg btn-success">New Route</a>
   </h1>
 </div>
 
@@ -11,14 +10,26 @@
   <div class="col-md-4">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= route.name %></h3>
+        <h3 class="panel-title text-center"><%= route.name %></h3>
       </div>
       <div class="panel-body">
-        <%= route.source %>
-        <%= route.destination %>
+        <dl class="dl-horizontal">
+          <dt>Source</dt>
+          <dd><%= route.source %></dd>
+          <dt>Destination</dt>
+          <dd><%= route.destination %></dd>
+          <dt>Passengers</dt>
+          <dd><%= route.passengers %></dd>
+          <dt>Anticipation</dt>
+          <dd><%= route.anticipation.description %></dd>
+        </dl>
       </div>
     </div>
   </div>
   <% end %>
+
+  <div class="col-md-4">
+        <h3 class="panel-title">  <a href="/routes/new" class="btn btn-lg btn-block btn-warning"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
+  </div>
 
 </div>
