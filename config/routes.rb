@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  #Home
+  root "routes#index"
+
   # Routes for the Anticipation resource:
   # CREATE
   get "/anticipations/new", :controller => "anticipations", :action => "new"
