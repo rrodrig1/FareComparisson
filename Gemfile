@@ -4,11 +4,12 @@ source 'https://rubygems.org'
 gem "starter_generators", :git => "http://github.com/raghubetina/starter_generators.git"
 
 #Devise gem
-gem 'devise'
+gem "devise"
 
-#Devise gem
-gem 'curl'
-gem 'curb'
+#DGems for Auth
+gem "curl"
+gem "curb"
+gem "omniauth"
 
 #Time related Gems
 gem 'chronic'

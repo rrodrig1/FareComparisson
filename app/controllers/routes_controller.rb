@@ -11,6 +11,8 @@ class RoutesController < ApplicationController
     @route = Route.find(params[:id])
     require 'open-uri'
     require 'json'
+    require 'curl'
+    require 'curb'
     #Source Data
     @source_address = @route.source
     @safe_source_address = URI.encode(@source_address)
@@ -27,14 +29,14 @@ class RoutesController < ApplicationController
 
     @dlat = parsed_data["results"][0]["geometry"]["location"]["lat"]
     @dlng = parsed_data["results"][0]["geometry"]["location"]["lng"]
-
+#Uber query
     if @route.passengers <=2
       parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token=irnTl1k3n6Q2HQ5kSPFfRc3wWTZUZGqvFrqwszLl&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s+"&seat_count="+@route.passengers.to_s).read)
     elsif @route.passengers > 2
       parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token=irnTl1k3n6Q2HQ5kSPFfRc3wWTZUZGqvFrqwszLl&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s).read)
     end
 
-
+#Uber pricing
     @uberp1 = parsed_data["prices"][0]["estimate"]
     @uberd1 = parsed_data["prices"][0]["localized_display_name"]
     @uberp2 = parsed_data["prices"][1]["estimate"]
@@ -48,6 +50,10 @@ class RoutesController < ApplicationController
     @uberp6 = parsed_data["prices"][7]["estimate"]
     @uberd6 = parsed_data["prices"][7]["localized_display_name"]
 
+    #Lyft Query
+# c = Curl::Easy.perform('https://www.google.com') do |curl|
+#
+# end
 
   end
 
