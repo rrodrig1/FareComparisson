@@ -13,7 +13,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-2">
+
+  </div>
+  <div class="col-md-8">
     <form action="/update_route/<%= @route.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -97,4 +100,7 @@
       <a href="/routes/<%= @route.id %>">Cancel</a>
     </form>
   </div>
+</div>
+<div class="col-md-2">
+
 </div>
