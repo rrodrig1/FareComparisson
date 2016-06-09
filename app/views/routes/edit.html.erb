@@ -33,7 +33,7 @@
       <!-- Label and input for source -->
       <div class="form-group">
         <label for="source" class="control-label">
-          Source
+          Source Address
         </label>
 
         <input type="text" id="source" name="source" placeholder="Source" class="form-control" value="<%= @route.source %>">
@@ -42,7 +42,7 @@
       <!-- Label and input for destination -->
       <div class="form-group">
         <label for="destination" class="control-label">
-          Destination
+          Destination Address
         </label>
 
         <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control" value="<%= @route.destination %>">
@@ -54,7 +54,14 @@
           Passengers
         </label>
 
-        <input type="text" id="passengers" name="passengers" placeholder="Passengers" class="form-control" value="<%= @route.passengers %>">
+        <select class="form-control" id="passengers" name="passengers" value="<%= @route.passengers %>">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
       </div>
 
       <!-- Label and input for anticipation_id -->
@@ -63,7 +70,16 @@
           Anticipation
         </label>
 
-        <input type="text" id="anticipation_id" name="anticipation_id" placeholder="Anticipation" class="form-control" value="<%= @route.anticipation_id %>">
+        <%= select_tag(:anticipation_id, options_from_collection_for_select(Anticipation.all, :id, :description, @route.anticipation_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for departure -->
+      <div class="form-group">
+        <label for="departure" class="control-label">
+          Departure Time
+        </label>
+
+        <input type="text" id="departure" name="departure" placeholder="Departure" class="form-control" value="<%= @route.departure %>">
       </div>
 
       <!-- Label and input for frecuency -->
@@ -73,15 +89,6 @@
         </label>
 
         <input type="text" id="frecuency" name="frecuency" placeholder="Frecuency" class="form-control" value="<%= @route.frecuency %>">
-      </div>
-
-      <!-- Label and input for departure -->
-      <div class="form-group">
-        <label for="departure" class="control-label">
-          Departure
-        </label>
-
-        <input type="text" id="departure" name="departure" placeholder="Departure" class="form-control" value="<%= @route.departure %>">
       </div>
 
       <!-- Label and input for user_id -->

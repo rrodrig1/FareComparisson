@@ -25,24 +25,29 @@
         </dl>
       </div>
       <div class="panel-footer">
-          <div class="btn-group btn-group-justified">
-            <a href="/routes/<%= route.id %>" class="btn btn-info">
-              View
-            </a>
-            <a href="/routes/<%= route.id %>/edit" class="btn btn-warning">
-              Edit
-            </a>
-            <a href="/delete_route/<%= route.id %>" class="btn btn-danger" rel="nofollow">
-              Delete
-            </a>
-          </div>
+        <div class="btn-group btn-group-justified">
+          <a href="/routes/<%= route.id %>" class="btn btn-info">
+            <i class="fa fa-lg fa-eye" aria-hidden="true"></i>
+          </a>
+          <a href="/routes/<%= route.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+          </a>
+          <a href="/delete_route/<%= route.id %>" class="btn btn-danger" rel="nofollow">
+            <i class="fa fa-lg fa-trash" aria-hidden="true"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
   <% end %>
 
+</div>
+<div class="row">
   <div class="col-md-4">
-        <h3 class="panel-title">  <a href="/routes/new" class="btn btn-lg btn-block btn-warning"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
   </div>
-
+  <div class="col-md-4">
+    <h3 class="panel-title">  <a href="/routes/new" class="btn btn-lg btn-block btn-warning"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
+  </div>
+  <div class="col-md-4">
+  </div>
 </div>

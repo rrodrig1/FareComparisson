@@ -43,6 +43,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    awesome_print (1.7.0)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -59,6 +60,10 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    curb (0.9.3)
+    curl (0.0.9)
+      awesome_print (>= 0.2.1)
+      unidecoder (>= 1.1.1)
     debug_inspector (0.0.2)
     devise (4.1.1)
       bcrypt (~> 3.0)
@@ -156,6 +161,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    unidecoder (1.1.2)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -172,6 +178,8 @@ DEPENDENCIES
   byebug
   chronic
   coffee-rails (~> 4.1.0)
+  curb
+  curl
   devise
   jbuilder (~> 2.0)
   jquery-rails

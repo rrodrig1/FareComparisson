@@ -6,6 +6,10 @@ gem "starter_generators", :git => "http://github.com/raghubetina/starter_generat
 #Devise gem
 gem 'devise'
 
+#Devise gem
+gem 'curl'
+gem 'curb'
+
 #Time related Gems
 gem 'chronic'
 gem 'momentjs-rails', '>= 2.9.0'
