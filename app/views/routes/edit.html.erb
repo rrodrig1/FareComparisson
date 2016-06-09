@@ -18,13 +18,31 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @route.user_id %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @route.name %>">
+      </div>
+
+      <!-- Label and input for source -->
+      <div class="form-group">
+        <label for="source" class="control-label">
+          Source
+        </label>
+
+        <input type="text" id="source" name="source" placeholder="Source" class="form-control" value="<%= @route.source %>">
+      </div>
+
+      <!-- Label and input for destination -->
+      <div class="form-group">
+        <label for="destination" class="control-label">
+          Destination
+        </label>
+
+        <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control" value="<%= @route.destination %>">
       </div>
 
       <!-- Label and input for passengers -->
@@ -34,6 +52,15 @@
         </label>
 
         <input type="text" id="passengers" name="passengers" placeholder="Passengers" class="form-control" value="<%= @route.passengers %>">
+      </div>
+
+      <!-- Label and input for anticipation_id -->
+      <div class="form-group">
+        <label for="anticipation_id" class="control-label">
+          Anticipation
+        </label>
+
+        <input type="text" id="anticipation_id" name="anticipation_id" placeholder="Anticipation" class="form-control" value="<%= @route.anticipation_id %>">
       </div>
 
       <!-- Label and input for frecuency -->
@@ -54,44 +81,17 @@
         <input type="text" id="departure" name="departure" placeholder="Departure" class="form-control" value="<%= @route.departure %>">
       </div>
 
-      <!-- Label and input for destination -->
+      <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="destination" class="control-label">
-          Destination
+        <label for="user_id" class="control-label">
+          User
         </label>
 
-        <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control" value="<%= @route.destination %>">
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @route.user_id %>">
       </div>
 
-      <!-- Label and input for source -->
-      <div class="form-group">
-        <label for="source" class="control-label">
-          Source
-        </label>
-
-        <input type="text" id="source" name="source" placeholder="Source" class="form-control" value="<%= @route.source %>">
-      </div>
-
-      <!-- Label and input for anticipation_id -->
-      <div class="form-group">
-        <label for="anticipation_id" class="control-label">
-          Anticipation
-        </label>
-
-        <input type="text" id="anticipation_id" name="anticipation_id" placeholder="Anticipation" class="form-control" value="<%= @route.anticipation_id %>">
-      </div>
-
-      <!-- Label and input for name -->
-      <div class="form-group">
-        <label for="name" class="control-label">
-          Name
-        </label>
-
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @route.name %>">
-      </div>
-
-      <button class="btn btn-warning">
-        Update Route
+      <button class="btn btn-success">
+        Save
       </button>
       or
       <a href="/routes/<%= @route.id %>">Cancel</a>

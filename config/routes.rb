@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   # READ
   get "/routes", :controller => "routes", :action => "index"
   get "/routes/:id", :controller => "routes", :action => "show"
+  get "/routes/:id/compare", :controller => "routes", :action => "compare"
 
   # UPDATE
   get "/routes/:id/edit", :controller => "routes", :action => "edit"

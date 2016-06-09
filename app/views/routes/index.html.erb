@@ -24,6 +24,19 @@
           <dd><%= route.anticipation.description %></dd>
         </dl>
       </div>
+      <div class="panel-footer">
+          <div class="btn-group btn-group-justified">
+            <a href="/routes/<%= route.id %>" class="btn btn-info">
+              View
+            </a>
+            <a href="/routes/<%= route.id %>/edit" class="btn btn-warning">
+              Edit
+            </a>
+            <a href="/delete_route/<%= route.id %>" class="btn btn-danger" rel="nofollow">
+              Delete
+            </a>
+          </div>
+      </div>
     </div>
   </div>
   <% end %>
