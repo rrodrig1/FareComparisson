@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @route.errors.any? %>
-  <% @route.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @route.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -91,20 +91,18 @@
         <input type="text" id="frecuency" name="frecuency" placeholder="Frecuency" class="form-control" value="<%= @route.frecuency %>">
       </div>
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for user_id Hidden -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @route.user_id %>">
+        <input type="hidden" name="user_id" value="<%= current_user.id %>">
       </div>
-
+      <% if current_user.id == @route.user_id %>
       <button class="btn btn-success">
         Save
       </button>
       or
       <a href="/routes/<%= @route.id %>">Cancel</a>
+      <% end %>
+
     </form>
   </div>
 </div>

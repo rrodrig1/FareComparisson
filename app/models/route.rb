@@ -6,4 +6,5 @@ class Route < ActiveRecord::Base
   validates :anticipation_id, :presence => true
 
   belongs_to :anticipation , :class_name => "Anticipation", :foreign_key => "anticipation_id"
+  belongs_to :user
 end

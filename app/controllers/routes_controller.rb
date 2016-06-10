@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
   def index
-    @routes = Route.all
+    @routes = current_user.routes
   end
 
   def show

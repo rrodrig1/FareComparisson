@@ -1,11 +1,11 @@
 <!-- Validation failure messages -->
 <% if @anticipation.errors.any? %>
-  <% @anticipation.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @anticipation.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <div class="page-header">
@@ -35,12 +35,13 @@
 
         <input type="text" id="description" name="description" placeholder="Description" class="form-control" value="<%= @anticipation.description %>">
       </div>
-
+      <% if current_user != nil && current_user.id ==1 %>
       <button class="btn btn-warning">
         Update Anticipation
       </button>
       or
       <a href="/anticipations/<%= @anticipation.id %>">Cancel</a>
+      <% end %>
     </form>
   </div>
 </div>

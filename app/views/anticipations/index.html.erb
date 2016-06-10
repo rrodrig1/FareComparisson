@@ -1,7 +1,9 @@
 <div class="page-header">
   <h1>
     Anticipations
+    <% if current_user != nil && current_user.id ==1 %>
     <a href="/anticipations/new" class="btn btn-lg btn-success">New Anticipation</a>
+    <% end %>
   </h1>
 </div>
 
@@ -9,20 +11,24 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Advance</th>
         <th>Description</th>
+        <th>Advance</th>
+        <% if current_user != nil && current_user.id ==1 %>
         <th>Actions</th>
+        <% end %>
       </tr>
 
       <% @anticipations.each do |anticipation| %>
       <tr>
-        <td><%= anticipation.advance %></td>
         <td><%= anticipation.description %></td>
+        <td><%= anticipation.advance %> Minutes</td>
+        <% if current_user != nil && current_user.id ==1 %>
         <td>
           <a href="/anticipations/<%= anticipation.id %>" class="btn btn-primary">Show</a>
           <a href="/anticipations/<%= anticipation.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_anticipation/<%= anticipation.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
+        <% end %>
       </tr>
       <% end %>
     </table>
