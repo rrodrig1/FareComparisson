@@ -3,7 +3,11 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+
+
     <dl class="dl-horizontal">
 
       <dt>Source</dt>
@@ -14,86 +18,136 @@
 
       <dt>Passengers</dt>
       <dd><%= @route.passengers %></dd>
-</dl>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>
-              Service Type
-            </th>
-            <th>
-              Uber
-            </th>
-            <th>
-              Lyft
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @route.passengers <=2 %>
-          <tr>
-            <td>
-              Shared
-            </td>
-            <td>
-              <%= @uberd1 %>: <%= @uberp1 %>
-            </td>
-          </tr>
+    </dl>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>
+            Service Type
+          </th>
+          <th>
+            Uber
+          </th>
+          <th>
+            Lyft
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @route.passengers <=2 %>
+        <tr>
+          <td>
+            Shared
+          </td>
+          <td>
+            <% if @surge1 > 1 %>
+            Service Unavailable due to Surge Pricing
+            <% else %>
+            <%= @uberd1 %>: <%= @uberp1 %>
+            <% end %>
+          </td>
+          <td>
+            <% if @surge1 > 1 %>
+            Service Unavailable due to Surge Pricing
+            <% else %>
+            <%= @lyftd1 %>: $<%= @lyftp1.round(2) %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+        <% if @route.passengers <=4 %>
+        <tr>
+          <% if @surge2 > 1 %>
+          <td class="danger">
+            Regular
+          </td>
+          <td class="danger">
+            <%= @uberd2 %>: <%= @uberp2 %>
+          </td>
+          <td class="danger">
+            <%= @lyftd2 %>: $<%= @lyftp2.round(2) %>
+          </td>
+          <% else %>
+          <td>
+            Regular
+          </td>
+          <td>
+            <%= @uberd2 %>: <%= @uberp2 %>
+          </td>
+          <td>
+            <%= @lyftd2 %>: $<%= @lyftp2.round(2) %>
+          </td>
           <% end %>
-          <% if @route.passengers <=4 %>
-          <tr>
-            <td>
-              Regular
-            </td>
-            <td>
-              <%= @uberd2 %>: <%= @uberp2 %>
-            </td>
-          </tr>
+
+        </tr>
+        <% end %>
+
+        <tr>
+          <% if @surge3 > 1 %>
+          <td class="danger">
+            Large
+          </td>
+          <td class="danger">
+            <%= @uberd3 %>: <%= @uberp3 %>
+          </td>
+          <td class="danger">
+            <%= @lyftd3 %>: $<%= @lyftp3.round(2) %>
+          </td>
+          <% else %>
+          <td>
+            Large
+          </td>
+          <td>
+            <%= @uberd3 %>: <%= @uberp3 %>
+          </td>
+          <td>
+            <%= @lyftd3 %>: $<%= @lyftp3.round(2) %>
+          </td>
           <% end %>
-          <tr>
-            <td>
-              Large
-            </td>
-            <td>
-              <%= @uberd3 %>: <%= @uberp3 %>
-            </td>
-          </tr>
-          <!-- <tr>
-            <td>
-              Fancy
-            </td>
-            <td>
-              <%= @uberd4 %>: <%= @uberp4 %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Luxury
-            </td>
-            <td>
-              <%= @uberd5 %>: <%= @uberp5 %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              SUV
-            </td>
-            <td>
-              <%= @uberd6 %>: <%= @uberp6 %>
-            </td>
-          </tr> -->
-        </tbody>
-      </table>
+        </tr>
+
+        <!-- <tr>
+        <td>
+        Fancy
+      </td>
+      <td>
+      <%= @uberd4 %>: <%= @uberp4 %>
+    </td>
+  </tr>
+  <tr>
+  <td>
+  Luxury
+</td>
+<td>
+<%= @uberd5 %>: <%= @uberp5 %>
+</td>
+</tr>
+<tr>
+<td>
+SUV
+</td>
+<td>
+<%= @uberd6 %>: <%= @uberp6 %>
+</td>
+</tr> -->
+</tbody>
+</table>
 
 
+<div class="row">
 
-    <div class="btn-group btn-group-justified">
-      <a href="/routes" class="btn btn-primary">
-        <i class="fa fa-lg fa-ban" aria-hidden="true"></i>
-      </a>
-      <a href="/routes/<%= @route.id %>/edit" class="btn btn-warning">
-        <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
-      </a>
-    </div>
+  <div class="btn-group btn-group-justified">
+    <a href="/routes/<%= @route.id %>" class="btn btn-info">
+      <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </a>
+    <a href="/routes" class="btn btn-default">
+      <i class="fa fa-home" aria-hidden="true"></i>
+    </a>
   </div>
+</div>
+
+</div>
+<div class="col-md-3">
+
+</div>
 </div>

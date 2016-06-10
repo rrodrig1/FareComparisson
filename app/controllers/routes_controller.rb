@@ -29,14 +29,14 @@ class RoutesController < ApplicationController
 
     @dlat = parsed_data["results"][0]["geometry"]["location"]["lat"]
     @dlng = parsed_data["results"][0]["geometry"]["location"]["lng"]
-#Uber query
+    #Uber query
     if @route.passengers <=2
       parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token=irnTl1k3n6Q2HQ5kSPFfRc3wWTZUZGqvFrqwszLl&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s+"&seat_count="+@route.passengers.to_s).read)
     elsif @route.passengers > 2
       parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token=irnTl1k3n6Q2HQ5kSPFfRc3wWTZUZGqvFrqwszLl&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s).read)
     end
 
-#Uber pricing
+    #Uber pricing
     @uberp1 = parsed_data["prices"][0]["estimate"]
     @uberd1 = parsed_data["prices"][0]["localized_display_name"]
     @uberp2 = parsed_data["prices"][1]["estimate"]
@@ -50,10 +50,24 @@ class RoutesController < ApplicationController
     @uberp6 = parsed_data["prices"][7]["estimate"]
     @uberd6 = parsed_data["prices"][7]["localized_display_name"]
 
-    #Lyft Query
-# c = Curl::Easy.perform('https://www.google.com') do |curl|
-#
-# end
+    #Lyft pricing
+    @surge1 = parsed_data["prices"][0]["surge_multiplier"]
+    @surge2 = parsed_data["prices"][1]["surge_multiplier"]
+    @surge3 = parsed_data["prices"][2]["surge_multiplier"]
+    @lyfttime = parsed_data["prices"][0]["duration"]/60
+    @lyftdist = parsed_data["prices"][0]["distance"]
+    @lyftd1 = "Lyft Line"
+    @lyftp1 = (3.8 + 0.2*@lyfttime + 0.9*@lyftdist)*@surge1/2 + @route.passengers-1
+    if (3.8 + 0.2*@lyfttime + 0.9*@lyftdist)*@surge1/2 < 3.5
+      @lyftp1 = (3.5 + @route.passengers-1)*@surge1
+    end
+    @lyftd2 = "Lyft"
+    @lyftp2 = (3.8 + 0.2*@lyfttime + 0.9*@lyftdist)*@surge2
+    @lyftd3 = "Lyft Plus"
+    @lyftp3 = (5.1 + 0.35*@lyfttime + 1.8*@lyftdist)*@surge3
+    if @lyftp3 < 8
+      @lyftp3 = 8
+    end
 
   end
 
