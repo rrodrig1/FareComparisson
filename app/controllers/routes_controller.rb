@@ -65,7 +65,7 @@ class RoutesController < ApplicationController
     @route = Route.new
     @route.user_id = params[:user_id]
     @route.passengers = params[:passengers]
-    @route.frecuency = params[:frecuency]
+    @route.frecuency = Chronic.parse(params[:frecuency])
     @route.departure = Chronic.parse(params[:departure])
     @route.destination = params[:destination]
     @route.source = params[:source]
