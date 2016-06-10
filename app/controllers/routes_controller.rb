@@ -66,7 +66,7 @@ class RoutesController < ApplicationController
     @route.user_id = params[:user_id]
     @route.passengers = params[:passengers]
     @route.frecuency = params[:frecuency]
-    @route.departure = params[:departure]
+    @route.departure = Chronic.parse(params[:departure])
     @route.destination = params[:destination]
     @route.source = params[:source]
     @route.anticipation_id = params[:anticipation_id]
@@ -88,8 +88,8 @@ class RoutesController < ApplicationController
 
     @route.user_id = params[:user_id]
     @route.passengers = params[:passengers]
-    @route.frecuency = params[:frecuency]
-    @route.departure = params[:departure]
+    @route.frecuency = Chronic.parse(params[:frecuency])
+    @route.departure = Chronic.parse(params[:departure])
     @route.destination = params[:destination]
     @route.source = params[:source]
     @route.anticipation_id = params[:anticipation_id]

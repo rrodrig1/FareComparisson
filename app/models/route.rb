@@ -4,6 +4,8 @@ class Route < ActiveRecord::Base
   validates :source, :presence => true
   validates :destination, :presence => true
   validates :anticipation_id, :presence => true
+  validates :frecuency, :presence => true
+
 
   belongs_to :anticipation , :class_name => "Anticipation", :foreign_key => "anticipation_id"
   belongs_to :user

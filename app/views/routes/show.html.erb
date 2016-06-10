@@ -20,11 +20,8 @@
       <dt>Passengers</dt>
       <dd><%= @route.passengers %></dd>
 
-      <dt>Frecuency</dt>
-      <dd><%= @route.frecuency %></dd>
-
-      <dt>Departure</dt>
-      <dd><%= @route.departure %></dd>
+      <dt>Departure Time</dt>
+      <dd><%= DateTime.parse(@route.frecuency).strftime('%b %e, %y at %l:%M %P') %></dd>
 
       <dt>Anticipation</dt>
       <dd><%= @route.anticipation.description %></dd>

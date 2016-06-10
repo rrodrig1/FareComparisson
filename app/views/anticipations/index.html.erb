@@ -21,7 +21,7 @@
       <% @anticipations.each do |anticipation| %>
       <tr>
         <td><%= anticipation.description %></td>
-        <td><%= anticipation.advance %> Minutes</td>
+        <td><%= anticipation.advance %> minutes</td>
         <% if current_user != nil && current_user.id ==1 %>
         <td>
           <a href="/anticipations/<%= anticipation.id %>" class="btn btn-primary">Show</a>
