@@ -6,6 +6,9 @@ gem "starter_generators", :git => "http://github.com/raghubetina/starter_generat
 #Devise gem
 gem "devise"
 
+#Secret Gem
+gem "figaro"
+
 #DGems for Auth
 gem "curl"
 gem "curb"

@@ -25,15 +25,15 @@ class RoutesController < ApplicationController
     #Destination Data
     @destination_address = @route.destination
     @safe_destination_address = URI.encode(@destination_address)
-    parsed_data = JSON.parse(open("https://maps.googleapis.com/maps/api/geocode/json?address="+@safe_destination_address+"&key=AIzaSyCRr5G5OPo7bo70QcQ--JntgZLJRhbVtVw").read)
+    parsed_data = JSON.parse(open("https://maps.googleapis.com/maps/api/geocode/json?address="+@safe_destination_address+"&key="+ENV["google_key"]).read)
 
     @dlat = parsed_data["results"][0]["geometry"]["location"]["lat"]
     @dlng = parsed_data["results"][0]["geometry"]["location"]["lng"]
     #Uber query
     if @route.passengers <=2
-      parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token=irnTl1k3n6Q2HQ5kSPFfRc3wWTZUZGqvFrqwszLl&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s+"&seat_count="+@route.passengers.to_s).read)
+      parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token="+ENV["uber_token"]+"&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s+"&seat_count="+@route.passengers.to_s).read)
     elsif @route.passengers > 2
-      parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token=irnTl1k3n6Q2HQ5kSPFfRc3wWTZUZGqvFrqwszLl&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s).read)
+      parsed_data = JSON.parse(open("https://api.uber.com/v1/estimates/price?server_token="+ENV["uber_token"]+"&start_latitude="+@slat.to_s+"&start_longitude="+@slng.to_s+"&end_latitude="+@dlat.to_s+"&end_longitude="+@dlng.to_s).read)
     end
 
     #Uber pricing
