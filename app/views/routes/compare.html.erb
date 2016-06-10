@@ -65,7 +65,7 @@
             <%= @uberd2 %>: <%= @uberp2 %>
           </td>
           <td class="danger">
-            <%= @lyftd2 %>: $<%= @lyftp2.round(2) %>
+            <%= @lyftd2 %>: $<%= (@lyftp2*0.85).round(0) %>-<%= (@lyftp2*1.15).round(0) %>
           </td>
           <% else %>
           <td>
@@ -75,7 +75,7 @@
             <%= @uberd2 %>: <%= @uberp2 %>
           </td>
           <td>
-            <%= @lyftd2 %>: $<%= @lyftp2.round(2) %>
+            <%= @lyftd2 %>: $<%= (@lyftp2*0.85).round(0) %>-<%= (@lyftp2*1.15).round(0) %>
           </td>
           <% end %>
 
@@ -91,7 +91,7 @@
             <%= @uberd3 %>: <%= @uberp3 %>
           </td>
           <td class="danger">
-            <%= @lyftd3 %>: $<%= @lyftp3.round(2) %>
+            <%= @lyftd3 %>: $<%= (@lyftp3*0.85).round(0) %>-<%= (@lyftp3*1.15).round(0) %>
           </td>
           <% else %>
           <td>
@@ -101,7 +101,7 @@
             <%= @uberd3 %>: <%= @uberp3 %>
           </td>
           <td>
-            <%= @lyftd3 %>: $<%= @lyftp3.round(2) %>
+            <%= @lyftd3 %>: $<%= (@lyftp3*0.85).round(0) %>-<%= (@lyftp3*1.15).round(0) %>
           </td>
           <% end %>
         </tr>
