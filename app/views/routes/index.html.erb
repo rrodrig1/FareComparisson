@@ -53,8 +53,94 @@
 <div class="row">
   <div class="col-md-4">
   </div>
+
   <div class="col-md-4">
-    <h3 class="panel-title">  <a href="/routes/new" class="btn btn-lg btn-block btn-warning"><i class="fa fa-plus" aria-hidden="true"></i></a></h3>
+    <h3 class="btn btn-lg btn-block btn-warning" type="button" data-toggle="collapse" data-target="#newroute" aria-expanded="false" aria-controls="newroute">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </h3>
+
+    <div class="collapse" id="newroute">
+      <div class="well">
+        <form action="/create_route" method="post">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for name -->
+          <div class="form-group">
+            <label for="name" class="control-label">
+              Name
+            </label>
+
+            <input type="text" id="name" name="name" placeholder="Name" class="form-control">
+          </div>
+
+          <!-- Label and input for source -->
+          <div class="form-group">
+            <label for="source" class="control-label">
+              Source Address
+            </label>
+
+            <input type="text" id="source" name="source" placeholder="Source" class="form-control">
+          </div>
+
+          <!-- Label and input for destination -->
+          <div class="form-group">
+            <label for="destination" class="control-label">
+              Destination Address
+            </label>
+
+            <input type="text" id="destination" name="destination" placeholder="Destination" class="form-control">
+          </div>
+
+          <!-- Label and input for passengers -->
+          <div class="form-group">
+            <label for="passengers" class="control-label">
+              Passengers
+            </label>
+
+            <select class="form-control" id="passengers" name="passengers">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+
+          </div>
+
+          <!-- Label and input for anticipation_id -->
+          <div class="form-group">
+            <label for="anticipation_id" class="control-label">
+              Anticipation
+            </label>
+
+            <%= select_tag(:anticipation_id, options_from_collection_for_select(Anticipation.all, :id, :description, @anticipation_id), :class => "form-control") %>
+
+          </div>
+
+          <!-- Label and input for frecuency -->
+          <div class="form-group">
+            <label for="frecuency" class="control-label">
+              Departure Time
+            </label>
+
+            <input type="text" id="frecuency" name="frecuency" placeholder="Frecuency" class="form-control">
+          </div>
+
+          <!-- Label and input for user_id Hidden -->
+          <div class="form-group">
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+          </div>
+
+          <button class="btn btn-success">
+            Save
+          </button>
+          or
+          <a href="/routes">Cancel</a>
+        </form>
+      </div>
+    </div>
   </div>
   <div class="col-md-4">
   </div>

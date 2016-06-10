@@ -17,7 +17,7 @@ class RoutesController < ApplicationController
     @source_address = @route.source
     @safe_source_address = URI.encode(@source_address)
 
-    parsed_data = JSON.parse(open("https://maps.googleapis.com/maps/api/geocode/json?address="+@safe_source_address+"&key=AIzaSyCRr5G5OPo7bo70QcQ--JntgZLJRhbVtVw").read)
+    parsed_data = JSON.parse(open("https://maps.googleapis.com/maps/api/geocode/json?address="+@safe_source_address+"&key="+ENV["google_key"]).read)
 
     @slat = parsed_data["results"][0]["geometry"]["location"]["lat"]
     @slng = parsed_data["results"][0]["geometry"]["location"]["lng"]
