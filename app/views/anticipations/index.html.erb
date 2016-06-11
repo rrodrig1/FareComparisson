@@ -2,7 +2,7 @@
   <h1>
     Anticipations
     <% if current_user != nil && current_user.id ==1 %>
-    <a href="/anticipations/new" class="btn btn-lg btn-success">New Anticipation</a>
+    <a href="/anticipations/new" class="btn btn-lg btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
     <% end %>
   </h1>
 </div>
@@ -24,9 +24,9 @@
         <td><%= anticipation.advance %> minutes</td>
         <% if current_user != nil && current_user.id ==1 %>
         <td>
-          <a href="/anticipations/<%= anticipation.id %>" class="btn btn-primary">Show</a>
-          <a href="/anticipations/<%= anticipation.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_anticipation/<%= anticipation.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/anticipations/<%= anticipation.id %>" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+          <a href="/anticipations/<%= anticipation.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+          <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, { controller: 'anticipations', action: 'destroy', id: anticipation.id }, data: {confirm: 'Are you sure you want to delete the anticipation?'}, class: "btn btn-danger" %>
         </td>
         <% end %>
       </tr>
