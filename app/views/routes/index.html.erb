@@ -28,7 +28,8 @@
           <% if DateTime.parse(route.frecuency) < Time.now %>
           <dd class="text-danger">Route is outdated!</dd>
           <% elsif DateTime.parse(route.frecuency) > Time.now && DateTime.parse(route.frecuency)-route.anticipation.advance.minutes < Time.now%>
-          <dd class="text-danger">Request Now!</dd>
+          <dd class="text-danger"><a href="/routes/<%= route.id %>/compare">
+          Request Now!</a></dd>
           <% else %>
           <dd><%= time_ago_in_words(DateTime.parse(route.frecuency)-route.anticipation.advance.minutes)%> left</dd>
           <% end %>
